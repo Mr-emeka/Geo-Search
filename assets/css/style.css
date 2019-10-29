@@ -28,7 +28,6 @@ body {
 }
 
 #map {
-  background-image: url('../img/shoe.jpg');
   position: relative;
   height: 80vh;
   background-size: cover;
@@ -100,4 +99,3 @@ input:focus {
   background-color: #BF1736;
   border: none;
 }
-
