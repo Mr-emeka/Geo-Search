@@ -33,8 +33,10 @@
       </div>
       <div class="weather-conditions">
         <div class="wind-speed">
-          <label>Wind Speed</label>
+          <label>Wind Speed & Degree</label>
           <h3 id="windSpeedValue">70km/h</h3>
+          <h3 id="windSpeedDegree">70</h3>
+
         </div>
         <div class="temp">
           <div>
@@ -48,8 +50,15 @@
           <h3 id="humidity">70km/h</h3>
         </div>
         <div>
+          <label>Visibility</label>
+          <h3 id="visibility">70km/h</h3>
+        </div>
+        <div>
           <label>current weather condition</label>
-          <h3 id="current-weather-conditions">70km/h</h3>
+          <img src="" alt="" />
+          <h3 id="current-weather-conditions">Drizzle</h3>
+          <h4 id="current-weather-description">light intensity drizzle</h4>
+
         </div>
       </div>
       <div>
@@ -60,10 +69,11 @@
   </main>
   <footer>
 
-
   </footer>
 
   <script src="./assets/js/main.js" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGQ-eqCjSLO2uNHQIVx8-A1D40N-jk1XA&callback=initMap"
+    async defer></script>
 
 </body>
 
