@@ -72,13 +72,10 @@ function displayAlert(message, num) {
 }
 
 function img(data) {
-  // const img = document.querySelector('.detail-img');
-  const img = document.createElement('img');
-  imgsect.appendChild(img);
+  const img = document.querySelector('.visual-detail');
   switch (data) {
     case "Clouds":
       img.src = 'assets/img/cloudy.png';
-
       break;
     case "Rainy":
       img.src = 'assets/img/rain.png';
