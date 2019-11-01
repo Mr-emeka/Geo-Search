@@ -108,7 +108,6 @@ function cToF(celsius) {
 function fToC(fahrenheit) {
   var fTemp = fahrenheit;
   var fToCel = (fTemp - 32) * 5 / 9;
-  console.log(fToCel);
   return temperature.innerText = fToCel.toFixed(2);
 }
 
