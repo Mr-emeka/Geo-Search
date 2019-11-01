@@ -4,6 +4,11 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# nav bar
+navbar.html
+assets/css/navbar.css
+assets/js/navbar.js
+
 
 # Runtime data
 pids

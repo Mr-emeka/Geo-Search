@@ -1,183 +1,239 @@
-* {
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+li {
+  list-style-type: none;
+  margin: 0 1vw;
+  font-size: 4vh;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  padding: 1vw;
+}
+
+a:hover {
+  color: rgba(241, 238, 13, 0.767);
+}
+
+ul {
+  margin: 0;
+  /*this option by default dispose the elements in a row (flex-direction: row)*/
+  display: flex;
 }
 
 body {
-  background: rgba(12, 20, 63, 1);
+  margin: 0;
+  overflow-x: hidden;
+  font-family: verdana;
+}
+
+nav {
+  width: 100vw;
+  padding: 2vh 0;
+  background-color: rgb(223, 167, 14);
+}
+
+
+.alert-danger {
+  text-align: center;
+  background-color: rgb(170, 37, 37);
   color: white;
-
+  padding: 10px;
 }
 
-
-.main {
-  display: grid;
-  grid-template-columns: .8fr .5fr;
-  grid-template-rows: auto 2fr;
-  justify-content: space-evenly;
-  margin: 0 10px;
-  align-self: center;
-}
-
-.userpage {
-  background-color: rgba(124, 34, 34, 0.74);
-  padding: 20px;
-  border-radius: 0 50px 50px 0;
-}
-
-#map {
-  position: relative;
-  padding: 30px;
-  zoom: 2;
-
-}
-
-.user-search-group {
-  display: grid;
-  grid-template-columns: 1fr .5fr;
-  grid-gap: .1em;
-  margin: 0 5px;
-}
-
-input {
-  width: 60%;
-  height: 7vh;
-  outline: none;
+input[type="search"] {
   border: none;
-  background: none;
-  color: #ffffff;
-  font-size: 1.3em;
-  border-bottom: 2px solid rgb(253, 253, 253);
-}
-
-::-webkit-input-placeholder {
-  color: rgb(255, 255, 255);
-  font-size: 1em;
-}
-
-input:focus {
-  width: 100%;
-  transform: scaleY(1.4);
-  transform: scale(1);
-}
-
-.btn {
-  width: 70%;
-  height: 5vh;
-  border-radius: 10px;
-  outline-offset: unset;
+  margin: none;
   outline: none;
 }
 
-.btn:hover {
-  background-color: rgba(245, 26, 66, 0.322);
-  color: white;
+input[type="search"]:hover {
+  outline: none;
+  cursor: pointer;
+}
+
+hr {
+  margin: 0;
 }
 
 .btn-search {
-  font-size: 1.2em;
-  color: white;
-  margin: 0 auto;
-  align-self: self-end;
-  background-color: #BF1736;
+  margin: none;
   border: none;
-}
-
-label {
-  font-size: 1.7em;
+  border-radius: 0 5px 0 0;
+  /* background: rgb(223, 167, 14); */
+  background: rgb(223, 167, 14);
+  text-transform: uppercase;
+  font-size: 1em;
   color: white;
-  margin: 0;
-  padding: 0;
-  text-transform: capitalize;
+  padding: 5px;
+  margin-left: 2vw;
+  outline: none;
 }
 
-.weather-conditions {
-  margin-top: 40px;
-}
-
-.weather-conditions>div {
-  margin-top: 10px;
-}
-
-.btn-convert {
-  border: none;
-  font-size: 1.4em;
-  background: #BF1736;
+.btn-search:hover {
   color: white;
-  margin: 40px 20px;
+  background: rgba(223, 167, 14, 0.767);
+  cursor: pointer;
 }
 
-.temperature {
-  margin: 0;
-}
-
-.temp {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 20px;
-}
-
-@media(max-width:960px) {
-  .main {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    font-size: 1em;
-    /* margin: 20% auto; */
+@media only screen and (max-width: 500px) {
+  ul {
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  /* position: relative; */
+  margin: 7vh 0;
+  /* border: 1px solid gray; */
+}
+
+.section-2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  width: 100vw;
+
+  /* margin: 5vh 1vw; */
+}
+
+.userpage {
+  width: 350px;
+  padding: 5px;
+  /* height: 30px; */
+  background: rgb(229, 227, 223);
+
+}
+
+#map {
+  width: 600px;
+  /* height: 700px; */
+  justify-content: flex-start;
+
+}
+
+@media (max-width:760px) {
   #map {
-    background-image: url('../img/shoe.jpg');
-    width: 100%;
-    border-radius: 0;
-    background-size: cover;
+    width: 350px;
+    height: 500px;
   }
 
   .userpage {
-    background-color: rgba(124, 34, 34, 0.74);
-    padding: 20px;
-    border-radius: 0;
-  }
+    margin-bottom: 10px;
+    width: 400px;
+    background: rgb(229, 227, 223);
 
-  .user-search-group {
-    display: grid;
-    grid-template-columns: 1fr .5fr;
-    grid-gap: 0;
-    margin: 0 10px;
-  }
-
-  input {
-    width: 70%;
-    height: 7vh;
-    outline: none;
-    border: none;
-    background: none;
-    color: white;
-    font-size: 1em;
-    border-bottom: 2px solid White;
-  }
-
-  .btn-search {
-    font-size: 1em;
-    color: white;
-    margin: 0 auto;
-    align-self: self-end;
-    background-color: #BF1736;
-    border: none;
-    width: 90%;
-    height: 5vh;
-    border-radius: 20px;
-  }
-
-  .temp {
-    display: grid;
-    grid-template-columns: 1fr 1fr
   }
 }
 
-@media(max-width:760px) {
-  #map {
-    display: none;
-  }
+.detail-1 {
+  display: flex;
+  margin: 20px;
+  background-color: rgb(164, 217, 242);
+  color: white;
+  border-radius: 20px;
+  z-index: 3;
+  box-shadow: 5px 5px 10px 0px rgba(87, 87, 87, 0.486);
 }
+
+.detail-1 img {
+  height: 100px;
+  width: 100px;
+}
+
+.detail-1>div {
+  margin: 0 auto;
+  padding-right: 5px;
+}
+
+.detail-2 {
+  display: flex;
+  display: flex;
+  margin: 20px;
+  background-color: rgb(164, 217, 242);
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px 0px rgba(87, 87, 87, 0.486);
+}
+
+.detail-2 div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.current-details {
+  color: white;
+}
+
+.detail-2>div>div {
+  padding: 0;
+}
+
+.graph {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-section {
+  margin-bottom: 20px;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.temp {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid skyblue;
+  width: 30px;
+  height: 30px;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.active {
+  color: skyblue;
+  border: 1px solid black;
+}
+
+.temp:hover {
+  cursor: pointer;
+}
+
+
+.footer {
+  background: black;
+  text-align: center;
+  margin: 0;
+  margin-top: 20px;
+  color: white;
+  padding: 20px;
+}
+
+/* 
+<style type='text/css'>.flex {}
+
+.flex div {
+  border: 1px solid gray;
+  padding: 4px;
+  background: #A4F2D8;
+  font-family: verdana;
+  font-size: 19px;
+  text-align: center;
+  color: gray;
+}
+
+</style><div class='flex'><div style='width: 200px; height: 30px'>1</div><div style='width: 30px; height: 30px'>2</div><div style='width: 30px; height: 30px'>3</div></div> */

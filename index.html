@@ -9,72 +9,90 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Geo-Search find and learn more about your favourite place/places today!!!</title>
-  <meta name="Geo-search" content="Geo-Search is a tool that allows people to search for places and extract information such as
-    timezone, map and local weather conditions like temperature, wind speed, humidity, and
-    precipitation.">
+  <title>🌏 Geo-Search find and learn more about your favourite place/places today!!!</title>
+  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body id="home-page">
+<body>
+  <nav class="nav-bar">
+    <ul>
+      <li class="nav-list"><a href="/" class="nav-link">Geo Search</a></li>
+    </ul>
+  </nav>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-  <main class="main">
+  <div class="alert">
+    <p class="alert-message"></p>
+  </div>
+  <section class="section-1">
+    <div class="search-section">
+      <h3>Location</h3>
+      <input type="search" name="location" id="location" placeholder="enter place here">
+      <button class="btn-search">Search</button>
+      <hr />
+    </div>
+  </section>
+  <section class="section-2">
     <div id="map">
-
-
     </div>
     <div class="userpage">
-      <div class="user-search-group">
-        <input type="text" name="place" placeholder="Enter Place Here" />
-        <button class="btn btn-search">Search</button>
-      </div>
-      <div class="weather-conditions">
-        <div class="wind-speed">
-          <label>Wind Speed & Degree</label>
-          <h3 id="windSpeedValue">70km/h</h3>
-          <h3 id="windSpeedDegree">70</h3>
+      <div class="detail-1">
+        <div class="graph">
 
         </div>
-        <div class="temp">
-          <div>
-            <label>Temperature</label>
-            <h3 id="temperature">78 deg Farenheint</h3>
+        <div>
+          <h3 id="place"></h3>
+          <h1 id="temperature"></h1>
+          <h3 id="current-weather-conditions"></h3>
+          <div class="btn-section">
           </div>
-          <button class="btn btn-convert">celcius</button>
-        </div>
-        <div>
-          <label>humidity</label>
-          <h3 id="humidity">70km/h</h3>
-        </div>
-        <div>
-          <label>Visibility</label>
-          <h3 id="visibility">70km/h</h3>
-        </div>
-        <div>
-          <label>current weather condition</label>
-          <img src="" alt="" />
-          <h3 id="current-weather-conditions">Drizzle</h3>
-          <h4 id="current-weather-description">light intensity drizzle</h4>
-
         </div>
       </div>
-      <div>
 
+      <div class="detail-2">
+        <div>
+          <h3 class="current-details">Current Details</h3>
+          <div>
+            <label>Humidity:</label>
+            <p id="humidity"></p>
+          </div>
+          <div>
+            <label>Pressure:</label>
+            <p id="pressure"></p>
+          </div>
+          <div>
+            <label>Visibility:</label>
+            <p id="visibility"></p>
+          </div>
+        </div>
+      </div>
+      <div class="detail-2">
+        <div>
+          <h3 class="current-details">Wind Details</h3>
+          <div>
+            <label>Speed:</label>
+            <p id="windSpeedValue"></p>
+          </div>
+          <div>
+            <label>Degrees:</label>
+            <p id="windSpeedDegree"></p>
+          </div>
+        </div>
       </div>
     </div>
-
-  </main>
-  <footer>
-
+  </section>
+  <footer class="footer">
+    <p>Designed with ❤ by Ukpai Chukwuemeka &copy; 2019</p>
+    <p>Powered by Andela DevC Programme</p>
   </footer>
 
-  <script src="./assets/js/main.js" async defer></script>
+
+  <script src="assets/js/main.js" async defer></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGQ-eqCjSLO2uNHQIVx8-A1D40N-jk1XA&callback=initMap"
     async defer></script>
-
 </body>
 
 </html>
