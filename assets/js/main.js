@@ -100,21 +100,16 @@ function img(data) {
 
 
 function cToF(celsius) {
-  if (isCelcius) {
-    temp = celsius;
-  } else {
-    var cTemp = celsius;
-    var cToFahr = cTemp * 9 / 5 + 32;
-    console.log(cToFahr);
-    return temp = cToFahr;
-  }
+  var cTemp = celsius;
+  var cToFahr = cTemp * 9 / 5 + 32;
+  return temperature.innerText = cToFahr.toFixed(2);
 }
 
 function fToC(fahrenheit) {
   var fTemp = fahrenheit;
   var fToCel = (fTemp - 32) * 5 / 9;
   console.log(fToCel);
-  return temperature.innerText = fToCel;
+  return temperature.innerText = fToCel.toFixed(2);
 }
 
 function getDefaultData(params) {
