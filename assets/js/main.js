@@ -27,9 +27,7 @@ btnSearch.addEventListener('click', (e) => {
     displayAlert("You can't input a number");
   } else {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Location.value}&APPID=02a2299960b7ffe33188503fbe432882`).then(res => res.json()).then((data) => {
-      cityLat = data.coord.lat;
-      cityLon = data.coord.lon;
-      temperature.innerText = `${data.main.temp}`;
+      // temp = data.main.temp;
       Place.innerText = `${data.name}`;
       windSpeedValue.innerText = data.wind.speed;
       windDegreeValue.innerText = `${data.wind.deg}°`;
@@ -44,6 +42,19 @@ btnSearch.addEventListener('click', (e) => {
       }
 
       Location.value = '';
+      temperature.innerText = temp;
+      // const btnC = document.createElement('button');
+      // const btnF = document.createElement('button');
+      // btnC.classList.add('temp');
+      // btnF.classList.add('temp');
+      // btnC.innerText = '°C';
+      // btnF.innerText = '°F';
+      // btnSection.append(btnC);
+      // btnSection.append(btnF);
+      // btnC.setAttribute('onclick', `cToF(${data.main.temp})`);
+      // btnF.setAttribute('onclick', `fToC(${data.main.temp})`);
+      cityLat = data.coord.lat;
+      cityLon = data.coord.lon;
       initMap()
     }).catch(err => {
       displayAlert('Place Not Found Kindly Carry Out a spell Check');
@@ -66,7 +77,7 @@ function displayAlert(message, num) {
       msg.innerText = message;
       setTimeout(() => {
         alert.style.display = 'none';
-      }, 100);
+      }, 1000);
       break;
   }
 }
