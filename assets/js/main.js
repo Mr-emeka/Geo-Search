@@ -51,8 +51,8 @@ btnSearch.addEventListener('click', (e) => {
       // btnF.innerText = '°F';
       // btnSection.append(btnC);
       // btnSection.append(btnF);
-      // btnC.setAttribute('onclick', `cToF(${data.main.temp})`);
-      // btnF.setAttribute('onclick', `fToC(${data.main.temp})`);
+      btnC.setAttribute('onclick', `cToF(${temp})`);
+      btnF.setAttribute('onclick', `fToC(${temp})`);
       cityLat = data.coord.lat;
       cityLon = data.coord.lon;
       initMap()
@@ -113,15 +113,16 @@ function cToF(celsius) {
 
 function fToC(fahrenheit) {
   var fTemp = fahrenheit;
-  var fToCel = (fTemp - 32) * 5 / 9;
-  return temperature.innerText = fToCel.toFixed(2);
+  var cToF = (cTemp * 9 / 5) + 32;
+  return temperature.innerText = cToF.toFixed(2);
+
 }
 
 function getDefaultData(params) {
   fetch(`${url}lagos&APPID=${apiID}`)
     .then(res => res.json()).then((data) => {
       console.log(data);
-      temp = data.main.temp - 273.15 ;
+      temp = data.main.temp - 273.15;
       Place.innerText = `${data.name}`;
       windSpeedValue.innerText = data.wind.speed;
       if (data.wind.deg) {
@@ -147,8 +148,8 @@ function getDefaultData(params) {
       btnF.innerText = '°F';
       btnSection.append(btnC);
       btnSection.append(btnF);
-      btnC.setAttribute('onclick', `cToF(${data.main.temp})`);
-      btnF.setAttribute('onclick', `fToC(${data.main.temp})`);
+      btnC.setAttribute('onclick', `cToF(${temp})`);
+      btnF.setAttribute('onclick', `fToC(${temp})`);
       cityLat = data.coord.lat;
       cityLon = data.coord.lon;
       initMap();
@@ -178,5 +179,5 @@ function initMap() {
 // google.maps.event.addDomListener(window, 'load', initMap);
 // window.addEventListener('load', initMap)
 
-// window.addEventListener('load', getDefaultData)
-document.addEventListener('DOMContentLoaded', getDefaultData);
+window.addEventListener('load', getDefaultData)
+// document.addEventListener('DOMContentLoaded', getDefaultData);
