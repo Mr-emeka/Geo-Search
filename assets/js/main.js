@@ -27,7 +27,7 @@ btnSearch.addEventListener('click', (e) => {
     displayAlert("You can't input a number");
   } else {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Location.value}&APPID=02a2299960b7ffe33188503fbe432882`).then(res => res.json()).then((data) => {
-      // temp = data.main.temp;
+      temp = data.main.temp - 273.15;
       Place.innerText = `${data.name}`;
       windSpeedValue.innerText = data.wind.speed;
       windDegreeValue.innerText = `${data.wind.deg}°`;
@@ -121,7 +121,7 @@ function getDefaultData(params) {
   fetch(`${url}lagos&APPID=${apiID}`)
     .then(res => res.json()).then((data) => {
       console.log(data);
-      temp = data.main.temp;
+      temp = data.main.temp - 273.15 ;
       Place.innerText = `${data.name}`;
       windSpeedValue.innerText = data.wind.speed;
       if (data.wind.deg) {
@@ -178,4 +178,5 @@ function initMap() {
 // google.maps.event.addDomListener(window, 'load', initMap);
 // window.addEventListener('load', initMap)
 
-window.addEventListener('load', getDefaultData)
+// window.addEventListener('load', getDefaultData)
+document.addEventListener('DOMContentLoaded', getDefaultData);
