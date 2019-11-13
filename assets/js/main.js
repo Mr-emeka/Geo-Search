@@ -31,6 +31,7 @@ btnSearch.addEventListener('click', (e) => {
   } else {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Location.value.toLowerCase()}&APPID=02a2299960b7ffe33188503fbe432882`).then(res => res.json()).then((data) => {
       console.log(data);
+      Location.value = ''
       degCelsius.style.display = 'inline-block';
       degFahrenheit.style.display = 'inline-block';
       temp = data.main.temp - 273.15;
@@ -56,7 +57,6 @@ btnSearch.addEventListener('click', (e) => {
 
       cityLat = data.coord.lat;
       cityLon = data.coord.lon;
-      Location.value == ''
       initMap();
     }).catch(err => {
       displayAlert('Place Not Found Kindly Carry Out a spell Check');
