@@ -11,8 +11,11 @@ const pressure = document.getElementById('pressure');
 const url = "https://api.openweathermap.org/data/2.5/weather?q=";
 const apiID = "02a2299960b7ffe33188503fbe432882";
 const imgsect = document.querySelector('.graph');
-var isCelcius = true;
-const btnSection = document.querySelector('.btn-section');
+// const btnSection = document.querySelector('.btn-section');
+const degCelsius = document.querySelector('.deg_celsius');
+const degFahrenheit = document.querySelector('.deg_fahrenheit');
+degCelsius.style.display = 'none';
+degFahrenheit.style.display = 'none';
 let temp;
 var cityLat = 37.78;
 var cityLon = -122.42;
@@ -26,11 +29,18 @@ btnSearch.addEventListener('click', (e) => {
   } else if (regInteger.test(Location.value)) {
     displayAlert("You can't input a number");
   } else {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Location.value}&APPID=02a2299960b7ffe33188503fbe432882`).then(res => res.json()).then((data) => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${Location.value.toLowerCase()}&APPID=02a2299960b7ffe33188503fbe432882`).then(res => res.json()).then((data) => {
+      console.log(data);
+      degCelsius.style.display = 'inline-block';
+      degFahrenheit.style.display = 'inline-block';
       temp = data.main.temp - 273.15;
       Place.innerText = `${data.name}`;
       windSpeedValue.innerText = data.wind.speed;
-      windDegreeValue.innerText = `${data.wind.deg}°`;
+      if (data.wind.deg) {
+        windDegreeValue.innerText = `${data.wind.deg}°`;
+      } else {
+        windDegreeValue.innerText = `0°`;
+      }
       humidity.innerText = data.main.humidity;
       weatherCondition.innerText = data.weather[0].main;
       pressure.innerText = data.main.pressure;
@@ -40,22 +50,14 @@ btnSearch.addEventListener('click', (e) => {
       } else {
         Visibility.innerText = `none`;
       }
+      temperature.innerText = `${temp.toFixed(1)}°C`;
+      degFahrenheit.setAttribute('onclick', `fToC(${temp})`);
+      degCelsius.setAttribute('onclick', `cToF(${temp})`);
 
-      Location.value = '';
-      temperature.innerText = temp;
-      // const btnC = document.createElement('button');
-      // const btnF = document.createElement('button');
-      // btnC.classList.add('temp');
-      // btnF.classList.add('temp');
-      // btnC.innerText = '°C';
-      // btnF.innerText = '°F';
-      // btnSection.append(btnC);
-      // btnSection.append(btnF);
-      btnC.setAttribute('onclick', `cToF(${temp})`);
-      btnF.setAttribute('onclick', `fToC(${temp})`);
       cityLat = data.coord.lat;
       cityLon = data.coord.lon;
-      initMap()
+      Location.value == ''
+      initMap();
     }).catch(err => {
       displayAlert('Place Not Found Kindly Carry Out a spell Check');
     })
@@ -107,21 +109,14 @@ function img(data) {
 }
 
 
-function cToF(celsius) {
-  return temperature.innerText = celsius;
-}
 
-function fToC(fahrenheit) {
-  var fTemp = fahrenheit;
-  var cToF = (cTemp * 9 / 5) + 32;
-  return temperature.innerText = cToF.toFixed(2);
-
-}
 
 function getDefaultData(params) {
   fetch(`${url}lagos&APPID=${apiID}`)
     .then(res => res.json()).then((data) => {
       console.log(data);
+      degCelsius.style.display = 'inline-block';
+      degFahrenheit.style.display = 'inline-block';
       temp = data.main.temp - 273.15;
       Place.innerText = `${data.name}`;
       windSpeedValue.innerText = data.wind.speed;
@@ -139,21 +134,24 @@ function getDefaultData(params) {
       } else {
         Visibility.innerText = `none`;
       }
-      temperature.innerText = temp;
-      const btnC = document.createElement('button');
-      const btnF = document.createElement('button');
-      btnC.classList.add('temp');
-      btnF.classList.add('temp');
-      btnC.innerText = '°C';
-      btnF.innerText = '°F';
-      btnSection.append(btnC);
-      btnSection.append(btnF);
-      btnC.setAttribute('onclick', `cToF(${temp})`);
-      btnF.setAttribute('onclick', `fToC(${temp})`);
+      temperature.innerText = `${temp.toFixed(1)}°C`;
+      degFahrenheit.setAttribute('onclick', `fToC(${temp})`);
+      degCelsius.setAttribute('onclick', `cToF(${temp})`);
       cityLat = data.coord.lat;
       cityLon = data.coord.lon;
       initMap();
     })
+}
+
+
+function cToF(celsius) {
+  return temperature.innerText = `${celsius.toFixed(1)}°C`;
+}
+
+function fToC(fahrenheit) {
+  var fTemp = fahrenheit;
+  var cToF = (fTemp * 9 / 5) + 32;
+  return temperature.innerText = `${cToF.toFixed(1)}°F`;
 }
 // Initialize and add the map
 function initMap() {
@@ -166,6 +164,7 @@ function initMap() {
   var map = new google.maps.Map(
     document.getElementById('map'), {
       zoom: 19,
+
       center: place
     });
   // The marker, positioned at place
